@@ -4,6 +4,7 @@ package arbolbinario;
 //Definición de la clase Arbol
 class Arbol{
 NodoBinario Padre;
+
 public NodoBinario Raiz;
 //Constructor
 public Arbol(){
@@ -55,15 +56,31 @@ return result;
 }
 
 
-// Todo 1 ==>
-//Inorden Recursivo del arbol
-//public void Inorden (NodoBinario Nodo){
-//…
-//}
 
-// Todo 2 ==>
-//Altura del arbol
-//public int Altura (NodoBinario Nodo){
-//…
-//}
+// Inorden Recursivo del arbol
+public void Inorden (NodoBinario Nodo){
+     if (Nodo == null) {
+            return;
+        }
+        Inorden(Nodo.Hizq);
+        System.out.printf(" %s  ", Nodo.dato);
+        Inorden(Nodo.Hder);
+}
+
+
+// Altura del arbol
+public int Altura (NodoBinario Nodo){
+    if(Nodo == null){
+        return -1;
+    }
+    
+    int izq = Altura(Nodo.Hizq);
+    int der = Altura(Nodo.Hder);
+    
+    if(izq > der){
+        return izq + 1;
+    } else {
+        return der + 1;
+    }
+}
 }
